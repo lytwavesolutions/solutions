@@ -9,15 +9,20 @@
     <meta name="author" content="Snegugu Mnguni">
     <link rel="canonical" href="https://www.lytewave.co.za/">
     
-    <link rel="icon" href="./images/logo2.png" type="image/png">
+    <link rel="icon" href="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406053/logo2_z4trv9.png" type="image/png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
+        /* GLOBAL FIX: Prevents layout shift/slanting */
+        * {
+            box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff; 
             color: #000000;
+            overflow-x: hidden; /* Crucial: Prevents horizontal scrollbar and ensures content doesn't push off-screen */
         }
         .text-primary-mono { color: #000000; } 
         .bg-primary-mono { background-color: #000000; }
@@ -107,6 +112,17 @@
         }
         /* END Project File Hover Style */
 
+        /* FIX: Added overflow hidden and text-truncate utility for small screens */
+        @media (max-width: 639px) {
+            .project-file .project-title {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%; /* Ensure it respects its container width */
+                display: block;
+            }
+        }
+
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -133,19 +149,19 @@
         }
     </style>
 </head>
-<body>
+<body class="scroll-smooth">
 
     <nav class="bg-white border-b border-line sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
             
             <button id="menu-button" class="sm:hidden flex items-center space-x-2 p-2 border border-transparent hover:border-line transition duration-300">
-                <img src="./images/logo1.png" onerror="this.onerror=null; this.src='https://placehold.co/32x32/000000/FFFFFF?text=M';" alt="Menu Logo" class="h-8 w-8 filter grayscale">
+                <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406052/logo1_rt8b14.png" onerror="this.onerror=null; this.src='https://placehold.co/32x32/000000/FFFFFF?text=M';" alt="Menu Logo" class="h-8 w-8 filter grayscale">
             </button>
             
             <a href="#" class="hidden sm:flex items-center space-x-2">
-                <img src="./images/logo1.png" onerror="this.onerror=null; this.src='https://placehold.co/24x24/000000/FFFFFF?text=L';" alt="Lytewave Solutions Logo" class="h-6 filter grayscale">
+                <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406052/logo1_rt8b14.png" onerror="this.onerror=null; this.src='https://placehold.co/24x24/000000/FFFFFF?text=L';" alt="Lytewave Solutions Logo" class="h-6 filter grayscale">
                 
-                <img src="./images/logo3.png" onerror="this.onerror=null; this.src='https://placehold.co/107x24/000000/FFFFFF?text=LYTEWAVE';" alt="Lytewave Solutions Text Logo" class="h-6 filter grayscale w-auto">
+                <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406053/logo3_x7mnpw.png" onerror="this.onerror=null; this.src='https://placehold.co/107x24/000000/FFFFFF?text=LYTEWAVE';" alt="Lytewave Solutions Text Logo" class="h-6 filter grayscale w-auto">
             </a>
 
             <div id="desktop-menu" class="hidden sm:flex space-x-6 uppercase text-sm font-medium">
@@ -168,7 +184,7 @@
     <main class="bg-white text-black py-16 md:py-24 border-b-2 border-line" id="home">
         <div class="container mx-auto px-4 text-center max-w-4xl">
             
-            <img src="./images/logo2.png" alt="Lytewave Logo Large" class="mx-auto h-auto max-w-sm mb-4 sm:max-w-xl md:max-w-2xl filter grayscale animate-in-sharp">
+            <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406053/logo2_z4trv9.png" alt="Lytewave Logo Large" class="mx-auto h-auto max-w-sm mb-4 sm:max-w-xl md:max-w-2xl filter grayscale animate-in-sharp">
             
             <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-widest uppercase animate-in-sharp">
                 SYSTEM OPTIMIZATION: <br>THE NEXT GENERATION
@@ -230,51 +246,19 @@
                 Executed Projects // File Directory
             </h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
                 
                 <a href="https://www.proteaglensecondaryone.co.za" target="_blank" class="group">
                     <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
                         <div class="project-icon-container">
-                            <img src="./images/f2.png" alt="Closed Folder Icon" class="project-icon filter grayscale">
-                            <img src="./images/f1.png" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                            <img src="./images/f2.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale">
+                            <img src="./images/f1.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
                         </div>
-                        <h4 class="text-base font-medium uppercase project-title transition duration-300">PGS1_WEB_REVAMP.HTML</h4>
+                        <h4 class="text-sm sm:text-base font-medium uppercase project-title transition duration-300">PGS1_WEB_REVAMP.HTML</h4>
                         <p class="text-xs text-accent-mono mt-1 transition duration-300">Web Development (2025)</p>
                     </div>
                 </a>
-                
-                <a href="#" target="_blank" class="group">
-                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
-                        <div class="project-icon-container">
-                            <img src="./images/f2.png" alt="Closed Folder Icon" class="project-icon filter grayscale">
-                            <img src="./images/f1.png" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
-                        </div>
-                        <h4 class="text-base font-medium uppercase project-title transition duration-300">CMD_REPORTS_V3.DASH</h4>
-                        <p class="text-xs text-accent-mono mt-1 transition duration-300">Dashboard Architecture</p>
-                    </div>
-                </a>
 
-                <a href="#" target="_blank" class="group">
-                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
-                        <div class="project-icon-container">
-                            <img src="./images/f2.png" alt="Closed Folder Icon" class="project-icon filter grayscale">
-                            <img src="./images/f1.png" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
-                        </div>
-                        <h4 class="text-base font-medium uppercase project-title transition duration-300">WHATSAPP_CRM_BOT.WBS</h4>
-                        <p class="text-xs text-accent-mono mt-1 transition duration-300">Optimization & Automation</p>
-                    </div>
-                </a>
-
-                <a href="#" target="_blank" class="block group">
-                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
-                        <div class="project-icon-container">
-                            <img src="./images/f2.png" alt="Closed Folder Icon" class="project-icon filter grayscale">
-                            <img src="./images/f1.png" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
-                        </div>
-                        <h4 class="text-base font-medium uppercase project-title transition duration-300">LEGACY_API_SYNC.JSON</h4>
-                        <p class="text-xs text-accent-mono mt-1 transition duration-300">API Integration & Migration</p>
-                    </div>
-                </a>
                 
             </div>
         </div>
@@ -301,18 +285,18 @@
             </h2>
 
             <div class="max-w-lg mx-auto bg-white p-8 rounded-none border border-line">
-                <form action="#" method="POST" class="space-y-6">
+                <form action="https://formspree.io/f/mrbrwvvj" method="POST" class="space-y-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Full Name</label>
-                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black">
+                        <input type="text" id="name" name="Full Name" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black">
                     </div>
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Work Email</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black">
+                        <input type="email" id="email" name="Work Email" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black">
                     </div>
                     <div>
                         <label for="service" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Interested Service Module</label>
-                        <select id="service" name="service" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black bg-white">
+                        <select id="service" name="Service Module" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black bg-white">
                             <option value="">Select a Module</option>
                             <option value="reporting">Dashboard & Reporting</option>
                             <option value="api">API Integrations</option>
@@ -323,7 +307,7 @@
                     </div>
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Transmission Details</label>
-                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black"></textarea>
+                        <textarea id="message" name="Transmission Details" rows="4" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black"></textarea>
                     </div>
                     <button type="submit" class="w-full px-6 py-3 bg-black text-white font-bold rounded-none uppercase tracking-widest hover:bg-gray-800 transition duration-300">
                         Execute Inquiry Transmission
