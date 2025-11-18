@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYTEWAVE SOLUTIONS // Digital Architecture</title>
+    <meta name="description" content="Lytewave Solutions: Digital architecture engineered for future scale. Expertise in Dashboard & Reporting, API Integrations, and WhatsApp Business Optimization.">
+    <meta name="keywords" content="Lytewave, Digital Transformation, API Integration, WhatsApp Business, Dashboard, Reporting, Analytics Consultation, Web Development">
+    <meta name="author" content="Snegugu Mnguni">
+    <link rel="canonical" href="https://www.lytewave.co.za/">
+    
+    <link rel="icon" href="./images/logo2.png" type="image/png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff; 
+            color: #000000;
+        }
+        .text-primary-mono { color: #000000; } 
+        .bg-primary-mono { background-color: #000000; }
+        .text-accent-mono { color: #888888; } 
+        .border-line { border-color: #333333; }
+        
+        .nav-hover-effect {
+            transition: all 0.2s;
+        }
+        .nav-hover-effect:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        .btn-minimal {
+            border: 2px solid #000000;
+            transition: all 0.2s;
+        }
+        .btn-minimal:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* CUSTOM CSS FOR MODULE INVERSION HOVER EFFECT */
+        .module-tile {
+            transition: all 0.3s ease;
+        }
+        .module-tile:hover {
+            background-color: #000000;
+            color: #ffffff !important;
+            border-color: #ffffff;
+        }
+        .module-tile:hover .text-primary-mono,
+        .module-tile:hover .text-gray-700 {
+            color: #ffffff !important;
+        }
+        .module-tile:hover .text-accent-mono {
+            color: #cccccc !important;
+        }
+        /* END MODULE INVERSION */
+
+        /* Project File Hover Style */
+        .project-file {
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid transparent; 
+            height: 100%;
+        }
+
+        .project-file:hover {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        .project-file:hover .project-title {
+            color: #ffffff !important;
+        }
+        /* Icon transition styles */
+        .project-icon-container {
+            position: relative;
+            height: 40px; /* Set fixed height for icons */
+            width: 40px;
+            margin-bottom: 0.5rem;
+        }
+        .project-icon, .project-icon-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.2s;
+            object-fit: contain;
+        }
+        .project-icon-hover {
+            opacity: 0; /* Hidden by default */
+        }
+        .project-file:hover .project-icon {
+            opacity: 0; /* Hide closed folder on hover */
+        }
+        .project-file:hover .project-icon-hover {
+            opacity: 1; /* Show open folder on hover */
+        }
+        /* END Project File Hover Style */
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in-sharp { animation: fadeIn 1s ease-out; }
+
+        /* Custom CSS for Mobile Menu (Logo1 as button) */
+        @media (max-width: 639px) {
+            #mobile-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem 0;
+                border-top: 1px solid #333;
+                background-color: #fff;
+            }
+            #mobile-menu.active {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="bg-white border-b border-line sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
+            
+            <button id="menu-button" class="sm:hidden flex items-center space-x-2 p-2 border border-transparent hover:border-line transition duration-300">
+                <img src="./images/logo1.png" onerror="this.onerror=null; this.src='https://placehold.co/32x32/000000/FFFFFF?text=M';" alt="Menu Logo" class="h-8 w-8 filter grayscale">
+            </button>
+            
+            <a href="#" class="hidden sm:flex items-center space-x-2">
+                <img src="./images/logo1.png" onerror="this.onerror=null; this.src='https://placehold.co/24x24/000000/FFFFFF?text=L';" alt="Lytewave Solutions Logo" class="h-6 filter grayscale">
+                
+                <img src="./images/logo3.png" onerror="this.onerror=null; this.src='https://placehold.co/107x24/000000/FFFFFF?text=LYTEWAVE';" alt="Lytewave Solutions Text Logo" class="h-6 filter grayscale w-auto">
+            </a>
+
+            <div id="desktop-menu" class="hidden sm:flex space-x-6 uppercase text-sm font-medium">
+                <a href="#services" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-white hover:bg-black transition duration-300 tracking-wider">Solutions</a>
+                <a href="#projects" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-white hover:bg-black transition duration-300 tracking-wider">Projects</a>
+                <a href="#about" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-white hover:bg-black transition duration-300 tracking-wider">Manifesto</a>
+                <a href="#contact" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-white hover:bg-black tracking-wider transition duration-300">Engagement</a>
+            </div>
+
+            <div id="mobile-menu" class="sm:hidden bg-white z-40">
+                <a href="#services" class="py-2 px-4 text-primary-mono hover:bg-gray-100 transition duration-300 tracking-wider uppercase">Solutions</a>
+                <a href="#projects" class="py-2 px-4 text-primary-mono hover:bg-gray-100 transition duration-300 tracking-wider uppercase">Projects</a>
+                <a href="#about" class="py-2 px-4 text-primary-mono hover:bg-gray-100 transition duration-300 tracking-wider uppercase">Manifesto</a>
+                <a href="#contact" class="py-2 px-4 btn-minimal text-primary-mono hover:text-white hover:bg-black tracking-wider uppercase">Engagement</a>
+            </div>
+            
+        </div>
+    </nav>
+
+    <main class="bg-white text-black py-16 md:py-24 border-b-2 border-line" id="home">
+        <div class="container mx-auto px-4 text-center max-w-4xl">
+            
+            <img src="./images/logo2.png" alt="Lytewave Logo Large" class="mx-auto h-auto max-w-sm mb-4 sm:max-w-xl md:max-w-2xl filter grayscale animate-in-sharp">
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-widest uppercase animate-in-sharp">
+                SYSTEM OPTIMIZATION: <br>THE NEXT GENERATION
+            </h1>
+            <p class="text-xl md:text-3xl mb-10 font-light text-accent-mono italic max-w-3xl mx-auto animate-in-sharp delay-300">
+                Data Architecture Engineered for Future Scale.
+            </p>
+            <a href="#services" class="inline-block px-8 py-3 bg-white text-black text-lg btn-minimal hover:bg-black hover:text-white tracking-widest uppercase animate-in-sharp delay-500">
+                View Protocol Overview
+            </a>
+        </div>
+    </main>
+    
+    <section class="py-16 md:py-24 bg-white" id="services">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-center mb-16 uppercase tracking-wider text-primary-mono border-b border-line pb-2">
+                Core Architecture Modules
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                    <div class="text-3xl mb-3 text-primary-mono italic font-serif">I.</div>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">Dashboard & Reporting</h3>
+                    <p class="text-gray-700 leading-relaxed text-sm">Translating complex telemetry into actionable reports. We design custom interfaces for real-time strategic command and immediate data transparency.</p>
+                </div>
+
+                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                    <div class="text-3xl mb-3 text-primary-mono italic font-serif">II.</div>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">API Integrations</h3>
+                    <p class="text-gray-700 leading-relaxed text-sm">Establishing seamless connectivity across diverse system components. Automating information flow to ensure zero operational friction.</p>
+                </div>
+
+                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                    <div class="text-3xl mb-3 text-primary-mono italic font-serif">III.</div>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">WhatsApp Business Optimization</h3>
+                    <p class="text-gray-700 leading-relaxed text-sm">Engineering direct, automated client channels. Implementing service bots and tailored messaging campaigns via secure communication protocols.</p>
+                </div>
+
+                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                    <div class="text-3xl mb-3 text-primary-mono italic font-serif">IV.</div>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">Web Development & Revamping</h3>
+                    <p class="text-gray-700 leading-relaxed text-sm">Building digital frontlines optimized for engagement. High-performance architecture and responsive design, ready for deployment across all known interfaces.</p>
+                </div>
+
+                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                    <div class="text-3xl mb-3 text-primary-mono italic font-serif">V.</div>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">Analytics Consultation</h3>
+                    <p class="text-gray-700 leading-relaxed text-sm">Deep-scan analysis of existing data streams. Providing expert consultation to define critical success indicators (CSIs) and operational efficiency metrics.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 md:py-24 bg-gray-50 border-t border-line">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-center mb-16 uppercase tracking-wider text-primary-mono border-b border-line pb-2">
+                Executed Projects // File Directory
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                
+                <a href="https://www.proteaglensecondaryone.co.za" target="_blank" class="group">
+                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
+                        <div class="project-icon-container">
+                            <img src="./images/f2.png" alt="Closed Folder Icon" class="project-icon filter grayscale">
+                            <img src="./images/f1.png" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                        </div>
+                        <h4 class="text-base font-medium uppercase project-title transition duration-300">PGS1_WEB_REVAMP.HTML</h4>
+                        <p class="text-xs text-accent-mono mt-1 transition duration-300">Web Development (2025)</p>
+                    </div>
+                </a>
+                
+                <a href="#" target="_blank" class="group">
+                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
+                        <div class="project-icon-container">
+                            <img src="./images/f2.png" alt="Closed Folder Icon" class="project-icon filter grayscale">
+                            <img src="./images/f1.png" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                        </div>
+                        <h4 class="text-base font-medium uppercase project-title transition duration-300">CMD_REPORTS_V3.DASH</h4>
+                        <p class="text-xs text-accent-mono mt-1 transition duration-300">Dashboard Architecture</p>
+                    </div>
+                </a>
+
+                <a href="#" target="_blank" class="group">
+                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
+                        <div class="project-icon-container">
+                            <img src="./images/f2.png" alt="Closed Folder Icon" class="project-icon filter grayscale">
+                            <img src="./images/f1.png" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                        </div>
+                        <h4 class="text-base font-medium uppercase project-title transition duration-300">WHATSAPP_CRM_BOT.WBS</h4>
+                        <p class="text-xs text-accent-mono mt-1 transition duration-300">Optimization & Automation</p>
+                    </div>
+                </a>
+
+                <a href="#" target="_blank" class="block group">
+                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
+                        <div class="project-icon-container">
+                            <img src="./images/f2.png" alt="Closed Folder Icon" class="project-icon filter grayscale">
+                            <img src="./images/f1.png" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                        </div>
+                        <h4 class="text-base font-medium uppercase project-title transition duration-300">LEGACY_API_SYNC.JSON</h4>
+                        <p class="text-xs text-accent-mono mt-1 transition duration-300">API Integration & Migration</p>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-black py-20 border-t-2 border-line" id="about">
+        <div class="container mx-auto px-4 text-center text-white max-w-3xl">
+            <h2 class="text-3xl font-extrabold mb-4 uppercase tracking-wider text-white">
+                PROJECT ENGAGEMENT PROTOCOL
+            </h2>
+            <p class="text-lg mb-8 font-light text-gray-400 italic max-w-4xl mx-auto">
+                Lytewave Solutions is directed by Snegugu Mnguni, a Full-Stack Developer focused on delivering tangible, scalable digital infrastructure for optimal operational command. We prioritize precision over volume.
+            </p>
+            <a href="#contact" class="inline-block px-8 py-3 bg-white text-black text-lg uppercase btn-minimal hover:bg-black hover:text-white tracking-widest shadow-none">
+                Begin Consultation Sequence
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-16 md:py-20 bg-white" id="contact">
+        <div class="container mx-auto px-4 border-t border-line pt-10">
+            <h2 class="text-3xl font-extrabold text-center mb-10 uppercase tracking-wider text-primary-mono">
+                Initiate Contact Command
+            </h2>
+
+            <div class="max-w-lg mx-auto bg-white p-8 rounded-none border border-line">
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Full Name</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Work Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black">
+                    </div>
+                    <div>
+                        <label for="service" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Interested Service Module</label>
+                        <select id="service" name="service" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black bg-white">
+                            <option value="">Select a Module</option>
+                            <option value="reporting">Dashboard & Reporting</option>
+                            <option value="api">API Integrations</option>
+                            <option value="whatsapp">WhatsApp Business Optimization</option>
+                            <option value="web">Web Development/Revamping</option>
+                            <option value="analytics">Analytics Consultation</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Transmission Details</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black"></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-6 py-3 bg-black text-white font-bold rounded-none uppercase tracking-widest hover:bg-gray-800 transition duration-300">
+                        Execute Inquiry Transmission
+                    </button>
+                </form>
+            </div>
+            
+            <div class="text-center text-gray-500 text-xs mt-12 space-y-1 tracking-wider">
+                <p>Lytewave Solutions // Data Architecture. Command Protocols V.25.</p>
+                <p>CONTACT PORTFOLIO: enquires@lytewavesolutions.co.za |  Whatsapp Business: +27 67 868 8158</p>
+                <p class="mt-4">&copy; 2025 Lytewave Solutions. All rights reserved. Access Log: V 7.0 Alpha.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
