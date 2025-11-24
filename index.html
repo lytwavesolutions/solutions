@@ -9,61 +9,68 @@
     <meta name="author" content="Snegugu Mnguni">
     <link rel="canonical" href="https://www.lytewave.co.za/">
     
-    <link rel="icon" href="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406053/logo2_z4trv9.png" type="image/png">
+    <link rel="icon" href="https://res.cloudinary.com/dg2udfm5l/image/upload/v1764007494/Untitled_design_2_wovpjf.png" type="image/png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         /* GLOBAL FIX: Prevents layout shift/slanting */
         * {
-            box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+            box-sizing: border-box;
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff; 
-            color: #000000;
-            overflow-x: hidden; /* Crucial: Prevents horizontal scrollbar and ensures content doesn't push off-screen */
+            background-color: #000000; /* INVERTED: Black Background */
+            color: #ffffff; /* INVERTED: White Text */
+            overflow-x: hidden;
         }
-        .text-primary-mono { color: #000000; } 
-        .bg-primary-mono { background-color: #000000; }
-        .text-accent-mono { color: #888888; } 
-        .border-line { border-color: #333333; }
+        
+        /* INVERTED UTILITIES */
+        .text-primary-mono { color: #ffffff; } 
+        .bg-primary-mono { background-color: #ffffff; }
+        .text-accent-mono { color: #a3a3a3; } 
+        .border-line { border-color: #333333; } 
+        .border-contrast { border-color: #ffffff; }
         
         .nav-hover-effect {
             transition: all 0.2s;
         }
         .nav-hover-effect:hover {
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #000000;
         }
         
         .btn-minimal {
-            border: 2px solid #000000;
+            border: 2px solid #ffffff;
+            color: #ffffff;
             transition: all 0.2s;
         }
         .btn-minimal:hover {
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #000000;
         }
 
         /* CUSTOM CSS FOR MODULE INVERSION HOVER EFFECT */
         .module-tile {
+            background-color: #000000;
+            border: 1px solid #333333;
             transition: all 0.3s ease;
         }
         .module-tile:hover {
-            background-color: #000000;
-            color: #ffffff !important;
+            background-color: #ffffff;
+            color: #000000 !important;
             border-color: #ffffff;
         }
         .module-tile:hover .text-primary-mono,
-        .module-tile:hover .text-gray-700 {
-            color: #ffffff !important;
+        .module-tile:hover .text-gray-300, 
+        .module-tile:hover .text-gray-400 {
+            color: #000000 !important;
         }
-        .module-tile:hover .text-accent-mono {
-            color: #cccccc !important;
+        /* Keep green checks green but readable */
+        .module-tile:hover .text-green-500 {
+            color: #16a34a !important;
         }
-        /* END MODULE INVERSION */
-
+        
         /* Project File Hover Style */
         .project-file {
             transition: all 0.2s;
@@ -73,25 +80,40 @@
             justify-content: center;
             padding: 1rem;
             text-align: center;
-            border: 1px solid transparent; 
+            border: 1px solid #333; 
             height: 100%;
+            background-color: #000000;
         }
 
         .project-file:hover {
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #000000;
             border-color: #ffffff;
         }
         .project-file:hover .project-title {
-            color: #ffffff !important;
+            color: #000000 !important;
         }
+        .project-file:hover .text-accent-mono {
+            color: #444444 !important;
+        }
+        
         /* Icon transition styles */
         .project-icon-container {
             position: relative;
-            height: 40px; /* Set fixed height for icons */
+            height: 40px; 
             width: 40px;
             margin-bottom: 0.5rem;
         }
+        
+        /* INVERT ICONS TO BE WHITE ON BLACK */
+        .invert-icon {
+            filter: invert(1);
+        }
+        /* Re-invert on hover (Black on White) */
+        .project-file:hover .invert-icon {
+            filter: invert(0); 
+        }
+
         .project-icon, .project-icon-hover {
             position: absolute;
             top: 0;
@@ -112,17 +134,15 @@
         }
         /* END Project File Hover Style */
 
-        /* FIX: Added overflow hidden and text-truncate utility for small screens */
         @media (max-width: 639px) {
             .project-file .project-title {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                max-width: 100%; /* Ensure it respects its container width */
+                max-width: 100%;
                 display: block;
             }
         }
-
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -130,7 +150,7 @@
         }
         .animate-in-sharp { animation: fadeIn 1s ease-out; }
 
-        /* Custom CSS for Mobile Menu (Logo1 as button) */
+        /* Custom CSS for Mobile Menu */
         @media (max-width: 639px) {
             #mobile-menu {
                 display: none;
@@ -140,51 +160,62 @@
                 width: 100%;
                 padding: 1rem 0;
                 border-top: 1px solid #333;
-                background-color: #fff;
+                background-color: #000000;
             }
             #mobile-menu.active {
                 display: flex;
                 flex-direction: column;
             }
         }
+        
+        /* Form Input Styles for Dark Mode */
+        input, select, textarea {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            border: 1px solid #333 !important;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #ffffff !important;
+            outline: none;
+        }
     </style>
 </head>
 <body class="scroll-smooth">
 
-    <nav class="bg-white border-b border-line sticky top-0 z-50">
+    <nav class="bg-black border-b border-line sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
             
-            <button id="menu-button" class="sm:hidden flex items-center space-x-2 p-2 border border-transparent hover:border-line transition duration-300">
-                <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406052/logo1_rt8b14.png" onerror="this.onerror=null; this.src='https://placehold.co/32x32/000000/FFFFFF?text=M';" alt="Menu Logo" class="h-8 w-8 filter grayscale">
+            <button id="menu-button" class="sm:hidden flex items-center space-x-2 p-2 border border-transparent hover:border-gray-700 transition duration-300">
+                <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1764007494/Untitled_design_2_wovpjf.png" alt="Menu Logo" class="h-10 w-10 object-contain">
             </button>
             
             <a href="#" class="hidden sm:flex items-center space-x-2">
-                <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406052/logo1_rt8b14.png" onerror="this.onerror=null; this.src='https://placehold.co/24x24/000000/FFFFFF?text=L';" alt="Lytewave Solutions Logo" class="h-6 filter grayscale">
-                
-                <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406053/logo3_x7mnpw.png" onerror="this.onerror=null; this.src='https://placehold.co/107x24/000000/FFFFFF?text=LYTEWAVE';" alt="Lytewave Solutions Text Logo" class="h-6 filter grayscale w-auto">
+                <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1764007494/Untitled_design_2_wovpjf.png" alt="Lytewave Solutions Logo" class="h-12 w-12 object-contain">
             </a>
 
             <div id="desktop-menu" class="hidden sm:flex space-x-6 uppercase text-sm font-medium">
-                <a href="#services" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-white hover:bg-black transition duration-300 tracking-wider">Solutions</a>
-                <a href="#projects" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-white hover:bg-black transition duration-300 tracking-wider">Projects</a>
-                <a href="#about" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-white hover:bg-black transition duration-300 tracking-wider">Manifesto</a>
-                <a href="#contact" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-white hover:bg-black tracking-wider transition duration-300">Engagement</a>
+                <a href="#lucas" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-black hover:bg-white transition duration-300 tracking-wider">LUCAS</a>
+                <a href="#services" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-black hover:bg-white transition duration-300 tracking-wider">Solutions</a>
+                <a href="#projects" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-black hover:bg-white transition duration-300 tracking-wider">Projects</a>
+                <a href="#pricing" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-black hover:bg-white transition duration-300 tracking-wider">Packages</a>
+                <a href="#contact" class="px-3 py-1 nav-hover-effect text-primary-mono hover:text-black hover:bg-white tracking-wider transition duration-300">Engagement</a>
             </div>
 
-            <div id="mobile-menu" class="sm:hidden bg-white z-40">
-                <a href="#services" class="py-2 px-4 text-primary-mono hover:bg-gray-100 transition duration-300 tracking-wider uppercase">Solutions</a>
-                <a href="#projects" class="py-2 px-4 text-primary-mono hover:bg-gray-100 transition duration-300 tracking-wider uppercase">Projects</a>
-                <a href="#about" class="py-2 px-4 text-primary-mono hover:bg-gray-100 transition duration-300 tracking-wider uppercase">Manifesto</a>
-                <a href="#contact" class="py-2 px-4 btn-minimal text-primary-mono hover:text-white hover:bg-black tracking-wider uppercase">Engagement</a>
+            <div id="mobile-menu" class="sm:hidden bg-black z-40 border-t border-gray-800">
+                <a href="#lucas" class="py-2 px-4 text-primary-mono hover:bg-gray-900 transition duration-300 tracking-wider uppercase">LUCAS AI</a>
+                <a href="#services" class="py-2 px-4 text-primary-mono hover:bg-gray-900 transition duration-300 tracking-wider uppercase">Solutions</a>
+                <a href="#projects" class="py-2 px-4 text-primary-mono hover:bg-gray-900 transition duration-300 tracking-wider uppercase">Projects</a>
+                <a href="#pricing" class="py-2 px-4 text-primary-mono hover:bg-gray-900 transition duration-300 tracking-wider uppercase">Packages</a>
+                <a href="#contact" class="py-2 px-4 btn-minimal text-primary-mono hover:text-black hover:bg-white tracking-wider uppercase">Engagement</a>
             </div>
             
         </div>
     </nav>
 
-    <main class="bg-white text-black py-16 md:py-24 border-b-2 border-line" id="home">
+    <main class="bg-black text-white py-16 md:py-24 border-b-2 border-line" id="home">
         <div class="container mx-auto px-4 text-center max-w-4xl">
             
-            <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406053/logo2_z4trv9.png" alt="Lytewave Logo Large" class="mx-auto h-auto max-w-sm mb-4 sm:max-w-xl md:max-w-2xl filter grayscale animate-in-sharp">
+            <img src="https://res.cloudinary.com/dcdswwtho/image/upload/v1763406053/logo2_z4trv9.png" alt="Lytewave Logo Large" class="mx-auto h-auto max-w-sm mb-4 sm:max-w-xl md:max-w-2xl filter grayscale invert animate-in-sharp">
             
             <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-widest uppercase animate-in-sharp">
                 SYSTEM OPTIMIZATION: <br>THE NEXT GENERATION
@@ -192,13 +223,73 @@
             <p class="text-xl md:text-3xl mb-10 font-light text-accent-mono italic max-w-3xl mx-auto animate-in-sharp delay-300">
                 Data Architecture Engineered for Future Scale.
             </p>
-            <a href="#services" class="inline-block px-8 py-3 bg-white text-black text-lg btn-minimal hover:bg-black hover:text-white tracking-widest uppercase animate-in-sharp delay-500">
+            <a href="#services" class="inline-block px-8 py-3 bg-black text-white border border-white text-lg btn-minimal hover:bg-white hover:text-black tracking-widest uppercase animate-in-sharp delay-500">
                 View Protocol Overview
             </a>
         </div>
     </main>
+
+    <section id="lucas" class="py-16 md:py-24 bg-neutral-900 border-b border-line overflow-hidden text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-center mb-16 uppercase tracking-wider text-white">
+                Meet LUCAS: Your Automated Workforce
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center mb-20 gap-10">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-wide">The Digital Operations Manager</h3>
+                    <div class="w-12 h-1 bg-white mb-6"></div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        LUCAS is not just software; he is your invisible employee. Designed for growing businesses where profit is often lost in the gap between "doing the work" and "managing the admin."
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        He connects your mobile device to your financial data, automating the heavy lifting of business operations so you can focus on growth, not paperwork.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-400 mb-8 font-mono">
+                        <li class="flex items-center">
+                            <span class="mr-2 font-bold text-white">></span> Operates on "Trigger & Action" philosophy
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2 font-bold text-white">></span> Lives securely in the Google Cloud
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2 font-bold text-white">></span> Works 24/7 without overhead
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="w-full h-64 md:h-96 bg-gray-800 border border-gray-700 flex items-center justify-center overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop" alt="Data Processing Abstract" class="w-full h-full object-cover filter grayscale contrast-125 opacity-70">
+                        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-1/2">
+                    <div class="w-full h-64 md:h-96 bg-gray-800 border border-gray-700 flex items-center justify-center overflow-hidden relative">
+                        <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1764009317/dashboard_ncvi6z.png" alt="LUCAS Dashboard Interface" class="w-full h-full object-cover filter grayscale">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-wide">Real-Time Intelligence</h3>
+                    <div class="w-12 h-1 bg-white mb-6"></div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        LUCAS reduces administrative overhead by up to 80%. Instead of hiring an accountant, an admin, and a warehouse manager, LUCAS fills all three roles simultaneously.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        From sending invoices instantly to updating your live Net Profit dashboard, he ensures you know your bank balance before you spend.
+                    </p>
+                    
+                    <a href="#contact" onclick="document.getElementById('service').value='lucas'" class="inline-block px-8 py-3 bg-white text-black text-sm uppercase hover:bg-gray-200 transition duration-300 tracking-widest font-bold">
+                        Deploy LUCAS System
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    <section class="py-16 md:py-24 bg-white" id="services">
+    <section class="py-16 md:py-24 bg-black" id="services">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-extrabold text-center mb-16 uppercase tracking-wider text-primary-mono border-b border-line pb-2">
                 Core Architecture Modules
@@ -206,41 +297,41 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                <div class="module-tile bg-black p-6 rounded-none border border-line shadow-none hover:shadow-xl">
                     <div class="text-3xl mb-3 text-primary-mono italic font-serif">I.</div>
                     <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">Dashboard & Reporting</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm">Translating complex telemetry into actionable reports. We design custom interfaces for real-time strategic command and immediate data transparency.</p>
+                    <p class="text-gray-300 leading-relaxed text-sm">Translating complex telemetry into actionable reports. We design custom interfaces for real-time strategic command and immediate data transparency.</p>
                 </div>
 
-                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                <div class="module-tile bg-black p-6 rounded-none border border-line shadow-none hover:shadow-xl">
                     <div class="text-3xl mb-3 text-primary-mono italic font-serif">II.</div>
                     <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">API Integrations</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm">Establishing seamless connectivity across diverse system components. Automating information flow to ensure zero operational friction.</p>
+                    <p class="text-gray-300 leading-relaxed text-sm">Establishing seamless connectivity across diverse system components. Automating information flow to ensure zero operational friction.</p>
                 </div>
 
-                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                <div class="module-tile bg-black p-6 rounded-none border border-line shadow-none hover:shadow-xl">
                     <div class="text-3xl mb-3 text-primary-mono italic font-serif">III.</div>
                     <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">WhatsApp Business Optimization</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm">Engineering direct, automated client channels. Implementing service bots and tailored messaging campaigns via secure communication protocols.</p>
+                    <p class="text-gray-300 leading-relaxed text-sm">Engineering direct, automated client channels. Implementing service bots and tailored messaging campaigns via secure communication protocols.</p>
                 </div>
 
-                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                <div class="module-tile bg-black p-6 rounded-none border border-line shadow-none hover:shadow-xl">
                     <div class="text-3xl mb-3 text-primary-mono italic font-serif">IV.</div>
                     <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">Web Development & Revamping</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm">Building digital frontlines optimized for engagement. High-performance architecture and responsive design, ready for deployment across all known interfaces.</p>
+                    <p class="text-gray-300 leading-relaxed text-sm">Building digital frontlines optimized for engagement. High-performance architecture and responsive design, ready for deployment across all known interfaces.</p>
                 </div>
 
-                <div class="module-tile bg-white p-6 rounded-none border border-line shadow-none hover:shadow-xl">
+                <div class="module-tile bg-black p-6 rounded-none border border-line shadow-none hover:shadow-xl">
                     <div class="text-3xl mb-3 text-primary-mono italic font-serif">V.</div>
                     <h3 class="text-xl font-bold mb-3 uppercase tracking-wider text-primary-mono">Analytics Consultation</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm">Deep-scan analysis of existing data streams. Providing expert consultation to define critical success indicators (CSIs) and operational efficiency metrics.</p>
+                    <p class="text-gray-300 leading-relaxed text-sm">Deep-scan analysis of existing data streams. Providing expert consultation to define critical success indicators (CSIs) and operational efficiency metrics.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-16 md:py-24 bg-gray-50 border-t border-line">
+    <section id="projects" class="py-16 md:py-24 bg-neutral-900 border-t border-line">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-extrabold text-center mb-16 uppercase tracking-wider text-primary-mono border-b border-line pb-2">
                 Executed Projects // File Directory
@@ -249,83 +340,143 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
                 
                 <a href="https://www.proteaglensecondaryone.co.za" target="_blank" class="group">
-                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
+                    <div class="project-file bg-black border border-primary-mono cursor-pointer h-full">
                         <div class="project-icon-container">
-                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494380/f2_mqbjnt.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale">
-                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494381/f1_zcdqdr.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494380/f2_mqbjnt.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale invert-icon">
+                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494381/f1_zcdqdr.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale invert-icon">
                         </div>
                         <h4 class="text-sm sm:text-base font-medium uppercase project-title transition duration-300">PGS1_WEB_REVAMP.HTML</h4>
                         <p class="text-xs text-accent-mono mt-1 transition duration-300">Web Development (2025)</p>
                     </div>
                 </a>
                 <a href="https://lytwavesolutions.github.io/lalala/" target="_blank" class="group">
-                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
+                    <div class="project-file bg-black border border-primary-mono cursor-pointer h-full">
                         <div class="project-icon-container">
-                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494380/f2_mqbjnt.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale">
-                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494381/f1_zcdqdr.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494380/f2_mqbjnt.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale invert-icon">
+                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494381/f1_zcdqdr.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale invert-icon">
                         </div>
                         <h4 class="text-sm sm:text-base font-medium uppercase project-title transition duration-300">LALALA(!)pH1.HTML</h4>
                         <p class="text-xs text-accent-mono mt-1 transition duration-300">Editorial/Fashion Store</p>
                     </div>
                 </a>
                 <a href="https://lytwavesolutions.github.io/doreenslaundrymat/" target="_blank" class="group">
-                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
+                    <div class="project-file bg-black border border-primary-mono cursor-pointer h-full">
                         <div class="project-icon-container">
-                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494380/f2_mqbjnt.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale">
-                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494381/f1_zcdqdr.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494380/f2_mqbjnt.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale invert-icon">
+                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494381/f1_zcdqdr.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale invert-icon">
                         </div>
                         <h4 class="text-sm sm:text-base font-medium uppercase project-title transition duration-300">DOREEN_S.HTML</h4>
                         <p class="text-xs text-accent-mono mt-1 transition duration-300">Laundry Mat</p>
                     </div>
                 </a>
-                   <a href="https://lytwavesolutions.github.io/thembasbraaispot/" target="_blank" class="group">
-                    <div class="project-file bg-white border border-primary-mono cursor-pointer h-full">
+                
+                <a href="https://lytwavesolutions.github.io/thembasbraaispot/" target="_blank" class="group">
+                    <div class="project-file bg-black border border-primary-mono cursor-pointer h-full">
                         <div class="project-icon-container">
-                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494380/f2_mqbjnt.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale">
-                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494381/f1_zcdqdr.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale">
+                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494380/f2_mqbjnt.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Closed Folder Icon" class="project-icon filter grayscale invert-icon">
+                            <img src="https://res.cloudinary.com/dg2udfm5l/image/upload/v1763494381/f1_zcdqdr.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=F';" alt="Open Folder Icon" class="project-icon-hover filter grayscale invert-icon">
                         </div>
-                        <h4 class="text-sm sm:text-base font-medium uppercase project-title transition duration-300">braai_SPOT.HTML</h4>
-                        <p class="text-xs text-accent-mono mt-1 transition duration-300">Buy & Braai</p>
+                        <h4 class="text-sm sm:text-base font-medium uppercase project-title transition duration-300">THEMBAS_BRAAI.HTML</h4>
+                        <p class="text-xs text-accent-mono mt-1 transition duration-300">Catering & Events</p>
                     </div>
-                </a>             
+                </a>
+                
             </div>
         </div>
     </section>
 
-    <section class="bg-black py-20 border-t-2 border-line" id="about">
-        <div class="container mx-auto px-4 text-center text-white max-w-3xl">
-            <h2 class="text-3xl font-extrabold mb-4 uppercase tracking-wider text-white">
+    <section id="pricing" class="py-16 md:py-24 bg-black border-t border-line">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-center mb-4 uppercase tracking-wider text-primary-mono">
+                Service Tiers
+            </h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+                Three tiers of service designed to meet you where you are and take you where you want to go.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                
+                <div class="module-tile p-8 flex flex-col shadow-none">
+                    <h3 class="text-xl font-bold mb-2 uppercase text-primary-mono">Basic Maintenance</h3>
+                    <p class="text-sm text-gray-400 mb-6 h-10">The "Peace of Mind" Solution for existing websites.</p>
+                    <div class="text-3xl font-extrabold mb-6 text-primary-mono">R300.00 <span class="text-sm font-normal text-gray-400">/ month</span></div>
+                    <ul class="space-y-3 text-sm mb-8 flex-grow text-gray-300">
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> 24/7 Uptime Monitoring</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Weekly Cloud Backups</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Security Updates</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Monthly Health Report</li>
+                    </ul>
+                </div>
+
+                <div class="module-tile p-8 flex flex-col relative shadow-none">
+                    <div class="absolute top-0 right-0 bg-white text-black text-xs font-bold px-2 py-1 uppercase z-10">Recommended</div>
+                    <h3 class="text-xl font-bold mb-2 uppercase text-primary-mono">Business Growth</h3>
+                    <p class="text-sm text-gray-400 mb-6 h-10">The "Active Management" Solution for active businesses.</p>
+                    <div class="text-3xl font-extrabold mb-6 text-primary-mono">R500.00 <span class="text-sm font-normal text-gray-400">/ month</span></div>
+                    <ul class="space-y-3 text-sm mb-8 flex-grow text-gray-300">
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> <strong>Everything in Basic</strong></li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> 10 Monthly Content Updates</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Professional Email Setup</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Detailed Analytics Insights</li>
+                    </ul>
+                </div>
+
+                <div class="module-tile p-8 flex flex-col shadow-none">
+                    <h3 class="text-xl font-bold mb-2 uppercase text-primary-mono">Premium Solutions</h3>
+                    <p class="text-sm text-gray-400 mb-6 h-10">Strategic Consulting & Digital Transformation.</p>
+                    <div class="text-2xl font-extrabold mb-6 text-primary-mono">See Catalogue <span class="block text-sm font-normal text-gray-400">for best solution</span></div>
+                    <ul class="space-y-3 text-sm mb-8 flex-grow text-gray-300">
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Business Intelligence</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Custom Automation (LUCAS)</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Process Optimization</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">✓</span> Custom Dashboards</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="https://github.com/lytwavesolutions/solutions/blob/39067682f71b89e272360259739955275c2a71dd/Lytewave%20Packages.pdf?raw=true" target="_blank" class="inline-block px-8 py-4 bg-white text-black text-lg btn-minimal hover:bg-black hover:text-white hover:border-white border border-white tracking-widest uppercase transition duration-300">
+                    Download Full Catalogue (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-20 border-t-2 border-black" id="about">
+        <div class="container mx-auto px-4 text-center text-black max-w-3xl">
+            <h2 class="text-3xl font-extrabold mb-4 uppercase tracking-wider text-black">
                 PROJECT ENGAGEMENT PROTOCOL
             </h2>
-            <p class="text-lg mb-8 font-light text-gray-400 italic max-w-4xl mx-auto">
+            <p class="text-lg mb-8 font-light text-gray-700 italic max-w-4xl mx-auto">
                 Lytewave Solutions is directed by Snegugu Mnguni, a Full-Stack Developer focused on delivering tangible, scalable digital infrastructure for optimal operational command. We prioritize precision over volume.
             </p>
-            <a href="#contact" class="inline-block px-8 py-3 bg-white text-black text-lg uppercase btn-minimal hover:bg-black hover:text-white tracking-widest shadow-none">
+            <a href="#contact" class="inline-block px-8 py-3 bg-black text-white text-lg uppercase btn-minimal hover:bg-white hover:text-black tracking-widest shadow-none">
                 Begin Consultation Sequence
             </a>
         </div>
     </section>
 
-    <footer class="py-16 md:py-20 bg-white" id="contact">
+    <footer class="py-16 md:py-20 bg-black text-white" id="contact">
         <div class="container mx-auto px-4 border-t border-line pt-10">
             <h2 class="text-3xl font-extrabold text-center mb-10 uppercase tracking-wider text-primary-mono">
                 Initiate Contact Command
             </h2>
 
-            <div class="max-w-lg mx-auto bg-white p-8 rounded-none border border-line">
+            <div class="max-w-lg mx-auto bg-black p-8 rounded-none border border-line">
                 <form action="https://formspree.io/f/mrbrwvvj" method="POST" class="space-y-6">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Full Name</label>
-                        <input type="text" id="name" name="Full Name" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black">
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-1 uppercase tracking-wider">Full Name</label>
+                        <input type="text" id="name" name="Full Name" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-white">
                     </div>
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Work Email</label>
-                        <input type="email" id="email" name="Work Email" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black">
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1 uppercase tracking-wider">Work Email</label>
+                        <input type="email" id="email" name="Work Email" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-white">
                     </div>
                     <div>
-                        <label for="service" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Interested Service Module</label>
-                        <select id="service" name="Service Module" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black bg-white">
+                        <label for="service" class="block text-sm font-medium text-gray-300 mb-1 uppercase tracking-wider">Interested Service Module</label>
+                        <select id="service" name="Service Module" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-white">
                             <option value="">Select a Module</option>
+                            <option value="lucas">LUCAS (Automation Engine)</option>
                             <option value="reporting">Dashboard & Reporting</option>
                             <option value="api">API Integrations</option>
                             <option value="whatsapp">WhatsApp Business Optimization</option>
@@ -334,10 +485,10 @@
                         </select>
                     </div>
                     <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1 uppercase tracking-wider">Transmission Details</label>
-                        <textarea id="message" name="Transmission Details" rows="4" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-black"></textarea>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1 uppercase tracking-wider">Transmission Details</label>
+                        <textarea id="message" name="Transmission Details" rows="4" required class="w-full px-4 py-3 border border-line rounded-none focus:ring-0 focus:border-white"></textarea>
                     </div>
-                    <button type="submit" class="w-full px-6 py-3 bg-black text-white font-bold rounded-none uppercase tracking-widest hover:bg-gray-800 transition duration-300">
+                    <button type="submit" class="w-full px-6 py-3 bg-white text-black font-bold rounded-none uppercase tracking-widest hover:bg-gray-200 transition duration-300">
                         Execute Inquiry Transmission
                     </button>
                 </form>
@@ -345,7 +496,7 @@
             
             <div class="text-center text-gray-500 text-xs mt-12 space-y-1 tracking-wider">
                 <p>Lytewave Solutions // Data Architecture. Command Protocols V.25.</p>
-                <p>CONTACT PORTFOLIO: enquires@lytewavesolutions.co.za |  Whatsapp Business: +27 67 868 8158</p>
+                <p>CONTACT PORTFOLIO: enquires@lytewavesolutions.co.za |  Whatsapp Business: +27 67 868 8158</p>
                 <p class="mt-4">&copy; 2025 Lytewave Solutions. All rights reserved. Access Log: V 7.0 Alpha.</p>
             </div>
         </div>
@@ -367,4 +518,3 @@
     </script>
 </body>
 </html>
-
